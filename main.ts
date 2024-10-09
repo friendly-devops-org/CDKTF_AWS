@@ -38,6 +38,9 @@ const LbConfig: LbConfigs = {
 }
 
 const LTConfig: LaunchTemplateConfigs = {
+    name: StackProps.name,
+    project: StackProps.project,
+    region: StackProps.region,
     imageId: "ami-09da212cf18033880",
     instanceType: "t3.micro",
     iamInstanceProfile: "ecsInstanceRole",
@@ -49,6 +52,9 @@ const LTConfig: LaunchTemplateConfigs = {
 const launchTemplate = new LaunchTemplateStack(app, "lt-stack", LTConfig)
 
 const AsgConfig: AutoScalingConfigs = {
+    name: StackProps.name,
+    project: StackProps.project,
+    region: StackProps.region,
     desiredCapacity: 3,
     minSize: 1,
     maxSize: 3,

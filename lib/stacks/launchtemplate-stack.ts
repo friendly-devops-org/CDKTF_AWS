@@ -3,9 +3,6 @@ import { AwsStackBase, BaseStackProps } from 'stackbase';
 import { LaunchTemplate, LaunchTemplateIamInstanceProfile } from '@cdktf/provider-aws/lib/launch-template'
 
 export interface LaunchTemplateConfigs extends BaseStackProps {
-    name: string,
-    project: string,
-    region: string,
     imageId: string,
     instanceType: string,
     iamInstanceProfile: string,
