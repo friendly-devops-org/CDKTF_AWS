@@ -52,7 +52,7 @@ const LTConfig: LaunchTemplateConfigs = {
     instanceType: "t3.micro",
     iamInstanceProfile: "ecsInstanceRole",
     securityGroupIds: [sGroup.sg.id],
-    userData: "./script/cluster.sh"
+    userData: "./scripts/cluster.sh"
 }
 
 const launchTemplate = new LaunchTemplateStack(app, "lt-stack", LTConfig)
