@@ -18,19 +18,21 @@ export interface AutoScalingConfigs extends BaseStackProps {
 }
 
 export class AutoScalingStack extends AwsStackBase {
-    public AutoScaling: AutoScalingGroup;
-    constructor(scope: Construct, :id: string, props: BaseStackProps) {
+    private autoScaling: AutoscalingGroup;
+    private cpuAutoScalingPolicy: AutoscalingPolicy;
+    private memoryautoScalingPolicy: AutoscalingPolicy;
+    constructor(scope: Construct, :id: string, props: AutoScalingConfigs) {
         super(scope,  `${props.name}-${id}`, {
             name: props.name,
             project: props.project,
             region: props.region,
         })
         this.autoScaling = new AutoscalingGroup(this, `${props.name}-auto-scaler`, {
-            name: `${name}-${project}`,
+            name: `${props.name}-${props.project}`,
             desiredCapacity: props.desiredCapacity,
             minSize: props.minSize,
             maxSize: props.maxSize,
-            launchTemplate: props.launchTemplate.
+            launchTemplate: props.launchTemplate,
             vpcZoneIdentifier: props.vpcZoneIdentifier,
 
         });
@@ -45,11 +47,11 @@ export class AutoScalingStack extends AwsStackBase {
                    namespace: "AWS/ECS",
                    statistic: "Average", 
                    metricDemension: {
-                    name: "ClusterName"
-                    value: props.ecsClusterName
-                   }
+                    name: "ClusterName",
+                    value: props.ecsClusterName,
+                   },
                 },
-            }
+            },
 
         });
 
@@ -63,11 +65,11 @@ export class AutoScalingStack extends AwsStackBase {
                    namespace: "AWS/ECS",
                    statistic: "Average", 
                    metricDemension: {
-                    name: "ClusterName"
-                    value: props.ecsClusterName
-                   }
+                    name: "ClusterName",
+                    value: props.ecsClusterName,
+                   },
                 },
-            }
+            },
 
         });
     }
