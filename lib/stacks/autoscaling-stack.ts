@@ -46,10 +46,12 @@ export class AutoScalingStack extends AwsStackBase {
                    metricName: "CPUReservation",
                    namespace: "AWS/ECS",
                    statistic: "Average", 
-                   metricDimension: [{
+                   metricDimension: [
+                   {
                     name: "ClusterName",
                     value: props.ecsClusterName,
-                   },],
+                   }
+                   ],
                 },
             },
 
@@ -64,10 +66,12 @@ export class AutoScalingStack extends AwsStackBase {
                    metricName: "MemoryReservation",
                    namespace: "AWS/ECS",
                    statistic: "Average", 
-                   metricDimension: [{
+                   metricDimension: [
+                   {
                     name: "ClusterName",
                     value: props.ecsClusterName,
-                   },],
+                   }
+                   ],
                 },
             },
 
