@@ -23,7 +23,7 @@ const sGroup = new sgStack(app, "sg-stack", StackProps);
 const db = new dbStack(app, "db-stack", StackProps);
 
 const DbConfig: DbConfigs = {
-    name: StackProps.name,
+//    name: StackProps.name,
     project: StackProps.project,
     region: StackProps.region,
     dbAddress: db.db.address,
