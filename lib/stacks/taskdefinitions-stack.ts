@@ -1,6 +1,6 @@
 import { Construct } from 'constructs';
 import { Fn } from 'cdktf';
-import { AwsStackBase, BaseStackProps } from './stackbase';
+import { AwsStackBase } from './stackbase';
 import { DbConfigs } from './db-stack';
 import { EcsTaskDefinition} from '@cdktf/provider-aws/lib/ecs-task-definition';
 import { IamRole } from '@cdktf/provider-aws/lib/iam-role';

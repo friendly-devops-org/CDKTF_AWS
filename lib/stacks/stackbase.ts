@@ -14,11 +14,9 @@ export interface BaseStackProps {
 export class AwsStackBase extends cdktf.TerraformStack {
     private _provider: cdktf.TerraformProvider;
 
-    constructor(scope: construct, baseProps: BaseStackProps) {
+    constructor(scope: Construct, id: string, baseProps: BaseStackProps) {
         super(scope, baseProps.name);
         this._provider = new AwsProvider(this, 'aws', {
-            name: baseProps.name,
-            project: baseProps.project,
             region: baseProps.region,
         })
         const bucketName =`${process.env.STATE_BUCKET}`

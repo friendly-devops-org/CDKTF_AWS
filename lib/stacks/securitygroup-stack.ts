@@ -1,5 +1,5 @@
 import { Construct } from 'constructs';
-import { AwsStackBase, BaseStackProps } from './stackbase';
+import { AwsStackBase } from './stackbase';
 import { SecurityGroup } from '@cdktf/provider-aws/lib/security-group';
 
 export class sgStack extends AwsStackBase {
