@@ -21,7 +21,7 @@ export class AutoScalingStack extends AwsStackBase {
     private autoScaling: AutoscalingGroup;
 //    private cpuAutoScalingPolicy: AutoscalingPolicy;
 //    private memoryAutoScalingPolicy: AutoscalingPolicy;
-    constructor(scope: Construct, :id: string, props: AutoScalingConfigs) {
+    constructor(scope: Construct, id: string, props: AutoScalingConfigs) {
         super(scope,  `${props.name}-${id}`, {
             name: props.name,
             project: props.project,
@@ -49,7 +49,7 @@ export class AutoScalingStack extends AwsStackBase {
                    metricDimension: [{
                     name: "ClusterName",
                     value: props.ecsClusterName,
-                   }],
+                   },],
                 },
             },
 
@@ -67,7 +67,7 @@ export class AutoScalingStack extends AwsStackBase {
                    metricDimension: [{
                     name: "ClusterName",
                     value: props.ecsClusterName,
-                   }],
+                   },],
                 },
             },
 
