@@ -16,8 +16,8 @@ export interface AppAutoScalingConfigs extends BaseStackProps {
 }
 
 export class AppAutoScalingStack extends AwsStackBase {
+    private appAutoScaling: AppautoscalingTarget;
     constructor(scope: Construct, id: string, props: AppAutoScalingConfigs) {
-        private appAutoScaling: AppautoscalingTarget
         super(scope,  `${props.name}-${id}`, {
             name: props.name,
             project: props.project,
