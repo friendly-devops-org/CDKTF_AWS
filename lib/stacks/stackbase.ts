@@ -1,7 +1,6 @@
-import ( Construct ) from 'constructs';
+import { Construct } from 'constructs';
 import * as cdktf from 'cdktf';
 import { AwsProvider } from '@cdktf/provider-aws/lib/provider';
-import { GlobalConfig } from  '../configs';
 import * fs from 'fs';
 
 
@@ -12,10 +11,10 @@ export interface BaseStackProps {
 }
 
 export class AwsStackBase extends cdktf.TerraformStack {
-    private _provider: cdktf.TerraformProvider;
+    public _provider: cdktf.TerraformProvider;
 
     constructor(scope: Construct, id: string, baseProps: BaseStackProps) {
-        super(scope, baseProps.name);
+        super(scope, `${baseProps.name}-${id}`);
         this._provider = new AwsProvider(this, 'aws', {
             region: baseProps.region,
         })
@@ -27,8 +26,8 @@ export class AwsStackBase extends cdktf.TerraformStack {
             region: `${baseProps.region}`
         });
 
-        get provider(): cdktf.TerraformProvider {
+/*        get provider(): cdktf.TerraformProvider {
             return this._provider;
-        }
+        }*/
     }
 }
