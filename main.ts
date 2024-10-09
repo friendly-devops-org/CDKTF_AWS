@@ -1,5 +1,5 @@
 import { App } from 'cdktf';
-import { AwsStackBase, BaseStackProps } from './lib/stacks/stackbase';
+import { BaseStackProps } from './lib/stacks/stackbase';
 import { taskDefinitionStack } from './lib/stacks/taskdefinitions-stack';
 import { dbStack, DbConfigs } from './lib/stacks/db-stack';
 import { LoadBalancerStack, LbConfigs } from './lib/stacks/loadbalancer-stack';
@@ -8,6 +8,7 @@ import { EcsServiceStack, EcsServiceConfigs } from './lib/stacks/ecs-service-sta
 //import { InstanceStack, InstanceConfigs } from './lib/stacks/ec2-stack';
 import { LaunchTemplateStack, LaunchTemplateConfigs } from './lib/stacks/launchtemplate-stack';
 import { AutoScalingStack, AutoScalingConfigs } from './lib/stacks/autoscaling-stack';
+import { AppAutoScalingStack, AppAutoScalingConfigs } from './lib/stacks/application-as-stack';
 import { sgStack } from './lib/stacks/securitygroup-stack';
 
 const StackProps: BaseStackProps = {
@@ -50,10 +51,10 @@ const launchTemplate = new LaunchTemplateStack(app, "lt-stack", LTConfig)
 const AsgConfig: AutoScalingConfigs = {
     desiredCapacity: 3,
     minSize: 1,
-    maxSize: 3
+    maxSize: 3,
     launchTemplate: {
-        id: launchTemplate.launchTemplate.id
-        version: "${Latest}"
+        id: launchTemplate.launchTemplate.id,
+        version: "${Latest}",
     },
     vpcZoneIdentifier: [`${process.env.SUBNET}`, `${process.env.SUBNET_2}`],
     cpuTargetValue: "80",
