@@ -3,7 +3,7 @@ import { AwsStackBase, BaseStackProps } from 'stackbase';
 import { AutoscalingGroup, AutoscalingGroupLaunchTemplate } from '@cdktf/provider-aws/lib/autoscaling-group'
 import { AutoscalingPolicy } from '@cdktf/provider-aws/lib/autoscaling-policy'
 
-export interface AutoScalingConfigs extends BaseStackProps {
+export interface AutoScalingConfigs extends BaseStackProps & {
     desiredCapacity: number,
     minSize: number,
     maxSize: number,
