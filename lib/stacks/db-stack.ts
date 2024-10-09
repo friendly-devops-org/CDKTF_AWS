@@ -1,6 +1,6 @@
 import { Construct } from 'constructs';
 import { DbInstance } from '@cdktf/provider-aws/lib/db-instance';
-import { AwsStackBase, BaseStackProps } from 'stackbase';
+import { AwsStackBase, BaseStackProps } from './stackbase';
 
 export interface DbConfigs extends BaseStackProps {
     name: string,
@@ -12,7 +12,7 @@ export interface DbConfigs extends BaseStackProps {
 
 export class dbStack extends AwsStackBase {
     public db: DbInstance;
-    constructor(scope: Construct, :wid: string, props: BaseStackProps) {
+    constructor(scope: Construct, id: string, props: BaseStackProps) {
         super(scope,  `${props.name}-${id}`, {
             name: `${props.name}`,
             project: `${props.project}`,
