@@ -1,54 +1,12 @@
 import { App } from 'cdktf';
-import { taskDefinitionStack } from './lib/stacks/taskdefinition-stack';
-import { dbStack, DbConfig } from './lib/stacks/db-stack';
+import { taskDefinitionStack } from './lib/stacks/taskdefinitions-stack';
+import { dbStack, DbConfigs } from './lib/stacks/db-stack';
 import { EcsClusterStack } from './lib/stacks/ecs-cluster-stack';
 import { EcsServiceStack, EcsServiceConfigs } from './lib/stacks/ecs-service-stack';
 //import { InstanceStack, InstanceConfigs } from './lib/stacks/ec2-stack';
-import { LaunchTemplateStack, LaunchTemplateConfigs } from './lib/stacks/ec2-stack';
+import { LaunchTemplateStack, LaunchTemplateConfigs } from './lib/stacks/launchtemplate-stack';
 import { AutoScalingStack, AutoScalingConfigs } from './lib/stacks/autoscaling-stack';
 import { sgStack } from './lib/stacks/securitygroup-stack';
-//import { RemoteBackend } from 'cdktf'; // uncomment this line to use Terraform Cloud
-//import { AwsProvider } from '@cdktf/provider-aws/lib/provider';
-//import { IamRole } from '@cdktf/provider-aws/lib/iam-role';
-//import { EcsService } from '@cdktf/provider-aws/lib/ecs-service';
-//import { EcsTaskDefinition} from '@cdktf/provider-aws/lib/ecs-task-definition';
-//import { CloudwatchLogGroup} from '@cdktf/provider-aws/lib/cloudwatch-log-group';
-//import { EcsCluster } from '@cdktf/provider-aws/lib/ecs-cluster';
-//import { Alb } from '@cdktf/provider-aws/lib/alb';
-//import { AlbTargetGroup } from '@cdktf/provider-aws/lib/alb-target-group';
-//import { AlbListener } from '@cdktf/provider-aws/lib/alb-listener';
-//import { SecurityGroup } from '@cdktf/provider-aws/lib/security-group';
-//import { DbInstance } from '@cdktf/provider-aws/lib/db-instance';
-
-/*
-interface BaseStackProps {
-    name: string,
-    project: string,
-    region: string,
-}
-*/
-
-/*
-interface DbConfigs extends BaseStackProps {
-    dbAddress: string,
-    dbName: string,
-}
-*/
-
-/*
-interface LbConfigs extends BaseStackProps {
-    securityGroup: string,
-}
-*/
-
-/*
-interface EcsServiceConfigs extends BaseStackProps {
-    cluster: string,
-    taskDefinition: string,
-    targetGroup: string,
-    securityGroup: string,
-}
-*/
 
 const StackProps: BaseStackProps = {
     name: "bmo-test",
