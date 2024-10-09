@@ -1,7 +1,7 @@
 import { Construct } from 'constructs';
 import * as cdktf from 'cdktf';
 import { AwsProvider } from '@cdktf/provider-aws/lib/provider';
-import * fs from 'fs';
+//import * fs from 'fs';
 
 
 export interface BaseStackProps {
