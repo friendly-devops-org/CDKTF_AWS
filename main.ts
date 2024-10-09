@@ -1,14 +1,12 @@
-import { Construct } from 'constructs';
-import * as cdktf from 'cdktf';
 import { App } from 'cdktf';
-import { taskDefinitionStack } from 'lib/stacks/taskdefinition-stack';
-import { dbStack, DbConfig } from 'lib/stacks/db-stack';
-import { EcsClusterStack } from 'lib/stacks/ecs-cluster-stack';
-import { EcsServiceStack, EcsServiceConfigs } from 'lib/stacks/ecs-service-stack';
-//import { InstanceStack, InstanceConfigs } from 'lib/stacks/ec2-stack';
-import { LaunchTemplateStack, LaunchTemplateConfigs } from 'lib/stacks/ec2-stack';
-import { AutoScalingStack, AutoScalingConfigs } from 'lib/stacks/autoscaling-stack';
-import { sgStack } from 'lib/stacks/securitygroup-stack';
+import { taskDefinitionStack } from './lib/stacks/taskdefinition-stack';
+import { dbStack, DbConfig } from './lib/stacks/db-stack';
+import { EcsClusterStack } from './lib/stacks/ecs-cluster-stack';
+import { EcsServiceStack, EcsServiceConfigs } from './lib/stacks/ecs-service-stack';
+//import { InstanceStack, InstanceConfigs } from './lib/stacks/ec2-stack';
+import { LaunchTemplateStack, LaunchTemplateConfigs } from './lib/stacks/ec2-stack';
+import { AutoScalingStack, AutoScalingConfigs } from './lib/stacks/autoscaling-stack';
+import { sgStack } from './lib/stacks/securitygroup-stack';
 //import { RemoteBackend } from 'cdktf'; // uncomment this line to use Terraform Cloud
 //import { AwsProvider } from '@cdktf/provider-aws/lib/provider';
 //import { IamRole } from '@cdktf/provider-aws/lib/iam-role';
