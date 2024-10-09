@@ -1,6 +1,8 @@
 import { App } from 'cdktf';
+import { AwsStackBase, BaseStackProps } from './lib/stacks/stackbase';
 import { taskDefinitionStack } from './lib/stacks/taskdefinitions-stack';
 import { dbStack, DbConfigs } from './lib/stacks/db-stack';
+import { LoadBalancerStack, LbConfigs } from './lib/stacks/loadbalancer-stack';
 import { EcsClusterStack } from './lib/stacks/ecs-cluster-stack';
 import { EcsServiceStack, EcsServiceConfigs } from './lib/stacks/ecs-service-stack';
 //import { InstanceStack, InstanceConfigs } from './lib/stacks/ec2-stack';
@@ -53,7 +55,7 @@ const AsgConfig: AutoScalingConfigs = {
         id: launchTemplate.launchTemplate.id
         version: "${Latest}"
     },
-    vpcZoneIdentifier: [],
+    vpcZoneIdentifier: [`${process.env.SUBNET}`, `${process.env.SUBNET_2}`],
     cpuTargetValue: "80",
     memoryTargetValue: "80",
     ecsClusterName: cluster.cluster.name,
@@ -66,7 +68,7 @@ const AsgConfig: AutoScalingConfigs = {
 }*/
 
 const taskDefinition = new taskDefinitionStack(app, "td-stack", DbConfig);
-const lb = new loadBalancerStack(app, "lb-stack", LbConfig);
+const lb = new LoadBalancerStack(app, "lb-stack", LbConfig);
 
 const EcsConfig: EcsServiceConfigs = {
     name: StackProps.name,

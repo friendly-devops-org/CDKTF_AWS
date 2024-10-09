@@ -11,6 +11,7 @@ export interface LaunchTemplateConfigs extends BaseStackProps {
 }
 
 export class LaunchTemplateStack extends AwsStackBase {
+    public launchTemplate: LaunchTemplate;
     constructor(scope: Construct, id: string, props: EcsServiceConfigs) {
         super(scope,`${props.name}-${id}` , {
             name: props.name,

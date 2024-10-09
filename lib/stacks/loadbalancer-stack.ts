@@ -8,7 +8,7 @@ export interface LbConfigs extends BaseStackProps {
     securityGroup: string,
 }
 
-export class loadBalancerStack extends AwsStackBase {
+export class LoadBalancerStack extends AwsStackBase {
     public lb: Alb;
     public lbl: AlbListener;
     public targetGroup: AlbTargetGroup;

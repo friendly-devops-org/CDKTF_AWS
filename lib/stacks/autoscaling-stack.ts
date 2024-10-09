@@ -4,9 +4,9 @@ import { AutoscalingGroup, AutoscalingGroupLaunchTemplate } from '@cdktf/provide
 import { AutoscalingPolicy } from '@cdktf/provider-aws/lib/autoscaling-policy'
 
 export interface AutoScalingConfigs extends BaseStackProps {
-    desiredCapacity: string,
-    minSize: string,
-    maxSize: string,
+    desiredCapacity: number,
+    minSize: number,
+    maxSize: number,
     launchTemplate: AutoscalingGroupLaunchTemplate,
     vpcZoneIdentifier:[string],
     cpuTargetValue: string,
