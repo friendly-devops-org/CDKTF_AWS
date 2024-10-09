@@ -39,6 +39,7 @@ export class AutoScalingStack extends AwsStackBase {
 
         new AutoscalingPolicy(this, `${props.name}-auto-scaler`, {
             autoscalingGroupName: this.autoScaling.name,
+            name: `${props.name}-${props.project}-cpu-scaler`
             policyType: "TargetTrackingScaling",
             targetTrackingConfiguration: {
                 targetValue: props.cpuTargetValue,
@@ -46,10 +47,10 @@ export class AutoScalingStack extends AwsStackBase {
                    metricName: "CPUReservation",
                    namespace: "AWS/ECS",
                    statistic: "Average", 
-/*                   metricDimension: [{
+                   metricDimension: [{
                     name: "ClusterName",
                     value: props.ecsClusterName,
-                   },],*/
+                   }],
                 },
             },
 
@@ -57,6 +58,7 @@ export class AutoScalingStack extends AwsStackBase {
 
         new AutoscalingPolicy(this, `${props.name}-auto-scaler`, {
             autoscalingGroupName: this.autoScaling.name,
+            name: `${props.name}-${props.project}-memory-scaler`
             policyType: "TargetTrackingScaling",
             targetTrackingConfiguration: {
                 targetValue: props.memoryTargetValue,
@@ -64,10 +66,10 @@ export class AutoScalingStack extends AwsStackBase {
                    metricName: "MemoryReservation",
                    namespace: "AWS/ECS",
                    statistic: "Average", 
-/*                   metricDimension: [{
+                   metricDimension: [{
                     name: "ClusterName",
                     value: props.ecsClusterName,
-                   },],*/
+                   }],
                 },
             },
 
