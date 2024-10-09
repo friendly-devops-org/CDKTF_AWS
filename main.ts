@@ -17,10 +17,17 @@ const StackProps: BaseStackProps = {
     region: "us-east-2"
 }
 
+const fileS = require('fs');
+function aFile(key: string){
+    fileS.appendFileSync('./scripts/cluster.sh',"\necho " + `key` +  " >> /etc/ecs/ecs.conf");
+}
+
 const app = new App();
 const cluster = new EcsClusterStack(app, "ecs-cluster-stack", StackProps);
 const sGroup = new sgStack(app, "sg-stack", StackProps);
 const db = new dbStack(app, "db-stack", StackProps);
+
+afile(cluster.cluser.name);
 
 const DbConfig: DbConfigs = {
     name: StackProps.name,
@@ -45,8 +52,7 @@ const LTConfig: LaunchTemplateConfigs = {
     instanceType: "t3.micro",
     iamInstanceProfile: "ecsInstanceRole",
     securityGroupIds: [sGroup.sg.id],
-    userData: `#!/bin/bash
-                echo ${cluster.cluster.name} >> /etc/ecs/ecs.config`,
+    userData: "./script/cluster.sh"
 }
 
 const launchTemplate = new LaunchTemplateStack(app, "lt-stack", LTConfig)

@@ -1,6 +1,7 @@
 import { Construct } from 'constructs';
 import { AwsStackBase, BaseStackProps } from './stackbase';
 import { LaunchTemplate } from '@cdktf/provider-aws/lib/launch-template'
+import { readFileSync } from 'fs'
 
 export interface LaunchTemplateConfigs extends BaseStackProps {
     name: string,
@@ -28,7 +29,7 @@ export class LaunchTemplateStack extends AwsStackBase {
             },
             vpcSecurityGroupIds: props.securityGroupIds,
             updateDefaultVersion: true,
-            userData: props.userData,
+            userData: readFileSync(`${props.userData}`,'utf8')
 
             tags : {
                 Name: `${props.name}-instance`,
