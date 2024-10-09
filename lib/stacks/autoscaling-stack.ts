@@ -19,8 +19,8 @@ export interface AutoScalingConfigs extends BaseStackProps {
 
 export class AutoScalingStack extends AwsStackBase {
     private autoScaling: AutoscalingGroup;
-    private cpuAutoScalingPolicy: AutoscalingPolicy;
-    private memoryAutoScalingPolicy: AutoscalingPolicy;
+//    private cpuAutoScalingPolicy: AutoscalingPolicy;
+//    private memoryAutoScalingPolicy: AutoscalingPolicy;
     constructor(scope: Construct, :id: string, props: AutoScalingConfigs) {
         super(scope,  `${props.name}-${id}`, {
             name: props.name,
@@ -37,7 +37,7 @@ export class AutoScalingStack extends AwsStackBase {
 
         });
 
-        this.cpuAutoScalingPolicy = new AutoscalingPolicy(this, `${props.name}-auto-scaler`, {
+        new AutoscalingPolicy(this, `${props.name}-auto-scaler`, {
             autoscalingGroupName: this.autoScaling.name,
             policyType: "TargetTrackingScaling",
             targetTrackingConfiguration: {
@@ -46,17 +46,17 @@ export class AutoScalingStack extends AwsStackBase {
                    metricName: "CPUReservation",
                    namespace: "AWS/ECS",
                    statistic: "Average", 
-                   metricDimension: {
+                   metricDimension: [{
                     name: "ClusterName",
                     value: props.ecsClusterName,
-                   },
+                   }],
                 },
             },
 
         });
 
-        this.memoryAutoScalingPolicy = new AutoscalingPolicy(this, `${props.name}-auto-scaler`, {
-            autoscalingGroupName: autoScaling.name,
+        new AutoscalingPolicy(this, `${props.name}-auto-scaler`, {
+            autoscalingGroupName: this.autoScaling.name,
             policyType: "TargetTrackingScaling",
             targetTrackingConfiguration: {
                 targetValue: props.memoryTargetValue,
@@ -64,10 +64,10 @@ export class AutoScalingStack extends AwsStackBase {
                    metricName: "MemoryReservation",
                    namespace: "AWS/ECS",
                    statistic: "Average", 
-                   metricDimension: {
+                   metricDimension: [{
                     name: "ClusterName",
                     value: props.ecsClusterName,
-                   },
+                   }],
                 },
             },
 
