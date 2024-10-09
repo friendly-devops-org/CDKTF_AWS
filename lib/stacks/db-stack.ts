@@ -3,6 +3,9 @@ import { DbInstance } from '@cdktf/provider-aws/lib/db-instance';
 import { AwsStackBase, BaseStackProps } from 'stackbase';
 
 export interface DbConfigs extends BaseStackProps {
+    name: string,
+    project: string,
+    region: string,
     dbAddress: string,
     dbName: string,
 }
