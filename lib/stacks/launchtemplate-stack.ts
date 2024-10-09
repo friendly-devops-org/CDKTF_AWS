@@ -5,7 +5,7 @@ import { LaunchTemplate, LaunchTemplateIamInstanceProfile } from '@cdktf/provide
 export interface LaunchTemplateConfigs extends BaseStackProps {
     imageId: string,
     instanceType: string,
-    iamInstanceProfile: LaunchTemplateIamInstanceProfile,
+    iamInstanceProfile: string,
     securityGroupIds: string[],
     userData: string,
 }
@@ -22,7 +22,9 @@ export class LaunchTemplateStack extends AwsStackBase {
             id: props.id,
             imageType: props.imageType,
             instanceType: props.instanceType,
-            iamInstanceProfile: props.iamInstanceProfile
+            iamInstanceProfile: {
+                name: props.iamInstanceProfile,
+            }
             securityGroupIds: props.securityGroupIds
             updateDefaultVersion: true,
             userData: props.userData,

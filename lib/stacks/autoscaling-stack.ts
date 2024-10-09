@@ -8,7 +8,7 @@ export interface AutoScalingConfigs extends BaseStackProps {
     minSize: number,
     maxSize: number,
     launchTemplate: AutoscalingGroupLaunchTemplate,
-    vpcZoneIdentifier:[string],
+    vpcZoneIdentifier: string[],
     cpuTargetValue: string,
     memoryTargetValue: string,
     ecsClusterName: string,
