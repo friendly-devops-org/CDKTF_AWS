@@ -37,7 +37,7 @@ export class AutoScalingStack extends AwsStackBase {
 
         });
 
-        new AutoscalingPolicy(this, `${props.name}-auto-scaler`, {
+        new AutoscalingPolicy(this, `${props.name}-cpu-auto-scaler`, {
             autoscalingGroupName: this.autoScaling.name,
             name: `${props.name}-${props.project}-cpu-scaler`,
             policyType: "TargetTrackingScaling",
@@ -56,7 +56,7 @@ export class AutoScalingStack extends AwsStackBase {
 
         });
 
-        new AutoscalingPolicy(this, `${props.name}-auto-scaler`, {
+        new AutoscalingPolicy(this, `${props.name}-memory-auto-scaler`, {
             autoscalingGroupName: this.autoScaling.name,
             name: `${props.name}-${props.project}-memory-scaler`,
             policyType: "TargetTrackingScaling",
