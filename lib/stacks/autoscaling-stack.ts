@@ -12,15 +12,15 @@ export interface AutoScalingConfigs extends BaseStackProps {
     maxSize: number,
     launchTemplate: AutoscalingGroupLaunchTemplate,
     vpcZoneIdentifier: string[],
-    cpuTargetValue: string,
-    memoryTargetValue: string,
+    cpuTargetValue: number,
+    memoryTargetValue: number,
     ecsClusterName: string,
 }
 
 export class AutoScalingStack extends AwsStackBase {
     private autoScaling: AutoscalingGroup;
     private cpuAutoScalingPolicy: AutoscalingPolicy;
-    private memoryautoScalingPolicy: AutoscalingPolicy;
+    private memoryAutoScalingPolicy: AutoscalingPolicy;
     constructor(scope: Construct, :id: string, props: AutoScalingConfigs) {
         super(scope,  `${props.name}-${id}`, {
             name: props.name,
@@ -38,7 +38,7 @@ export class AutoScalingStack extends AwsStackBase {
         });
 
         this.cpuAutoScalingPolicy = new AutoscalingPolicy(this, `${props.name}-auto-scaler`, {
-            autoscalingGroupName: autoScaling.name,
+            autoscalingGroupName: this.autoScaling.name,
             policyType: "TargetTrackingScaling",
             targetTrackingConfiguration: {
                 targetValue: props.cpuTargetValue,
@@ -46,7 +46,7 @@ export class AutoScalingStack extends AwsStackBase {
                    metricName: "CPUReservation",
                    namespace: "AWS/ECS",
                    statistic: "Average", 
-                   metricDemension: {
+                   metricDimension: {
                     name: "ClusterName",
                     value: props.ecsClusterName,
                    },
@@ -64,7 +64,7 @@ export class AutoScalingStack extends AwsStackBase {
                    metricName: "MemoryReservation",
                    namespace: "AWS/ECS",
                    statistic: "Average", 
-                   metricDemension: {
+                   metricDimension: {
                     name: "ClusterName",
                     value: props.ecsClusterName,
                    },

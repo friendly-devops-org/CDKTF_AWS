@@ -63,8 +63,8 @@ const AsgConfig: AutoScalingConfigs = {
         version: "${Latest}",
     },
     vpcZoneIdentifier: [`${process.env.SUBNET}`, `${process.env.SUBNET_2}`],
-    cpuTargetValue: "80",
-    memoryTargetValue: "80",
+    cpuTargetValue: 80,
+    memoryTargetValue: 80,
     ecsClusterName: cluster.cluster.name,
 }
 
