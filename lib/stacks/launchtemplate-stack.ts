@@ -29,7 +29,7 @@ export class LaunchTemplateStack extends AwsStackBase {
             },
             vpcSecurityGroupIds: props.securityGroupIds,
             updateDefaultVersion: true,
-            userData: readFileSync(`${props.userData}`,'utf8')
+            userData: readFileSync(`${props.userData}`,'utf8'),
 
             tags : {
                 Name: `${props.name}-instance`,
