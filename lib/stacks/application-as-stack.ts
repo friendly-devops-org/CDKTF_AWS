@@ -4,6 +4,9 @@ import { AppAutoscalingTarget } from '@cdktf/provider-aws/lib/appautoscaling-tar
 import { AppAutoscalingPolicy } from '@cdktf/provider-aws/lib/appautoscaling-policy'
 
 export interface AppAutoScalingConfigs extends BaseStackProps {
+    name: string,
+    project: string,
+    region: string,
     minCapacity: number,
     maxCapacity: number,
     cpuTargetValue: number,

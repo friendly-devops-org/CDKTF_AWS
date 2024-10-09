@@ -5,6 +5,9 @@ import { AlbTargetGroup } from '@cdktf/provider-aws/lib/alb-target-group';
 import { AlbListener } from '@cdktf/provider-aws/lib/alb-listener';
 
 export interface LbConfigs extends BaseStackProps {
+    name: string,
+    project: string,
+    region: string,
     securityGroup: string,
 }
 

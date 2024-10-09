@@ -4,6 +4,9 @@ import { AutoscalingGroup, AutoscalingGroupLaunchTemplate } from '@cdktf/provide
 import { AutoscalingPolicy } from '@cdktf/provider-aws/lib/autoscaling-policy'
 
 export interface AutoScalingConfigs extends BaseStackProps {
+    name: string,
+    project: string,
+    region: string,
     desiredCapacity: number,
     minSize: number,
     maxSize: number,

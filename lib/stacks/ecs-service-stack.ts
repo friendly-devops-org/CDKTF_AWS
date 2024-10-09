@@ -3,6 +3,9 @@ import { AwsStackBase, BaseStackProps } from 'stackbase';
 import { EcsService } from '@cdktf/provider-aws/lib/ecs-service';
 
 export interface EcsServiceConfigs extends BaseStackProps {
+    name: string,
+    project: string,
+    region: string,
     cluster: string,
     taskDefinition: string,
     targetGroup: string,

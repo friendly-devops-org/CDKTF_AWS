@@ -4,6 +4,9 @@ import { Instance, InstanceLaunchTemplate } from '@cdktf/provider-aws/lib/instan
 
 
 export interface InstanceConfigs extends BaseStackProps {
+    name: string,
+    project: string,
+    region: string,
     launchTemplate: InstanceLaunchTemplate,
 }
 
