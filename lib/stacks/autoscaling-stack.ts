@@ -47,10 +47,8 @@ export class AutoScalingStack extends AwsStackBase {
                    namespace: "AWS/ECS",
                    statistic: "Average", 
                    metricDimension: [
-                   {
                     name: "ClusterName",
                     value: props.ecsClusterName,
-                   }
                    ],
                 },
             },
@@ -67,10 +65,8 @@ export class AutoScalingStack extends AwsStackBase {
                    namespace: "AWS/ECS",
                    statistic: "Average", 
                    metricDimension: [
-                   {
                     name: "ClusterName",
                     value: props.ecsClusterName,
-                   }
                    ],
                 },
             },
