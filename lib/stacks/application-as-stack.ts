@@ -6,8 +6,8 @@ import { AppAutoscalingPolicy } from '@cdktf/provider-aws/lib/appautoscaling-pol
 export interface AppAutoScalingConfigs extends BaseStackProps {
     minCapacity: number,
     maxCapacity: number,
-    cpuTargetValue: string,
-    memoryTargetValue: string,
+    cpuTargetValue: number,
+    memoryTargetValue: number,
     ecsClusterName: string,
     ecsServiceName: string,
 }

@@ -62,6 +62,8 @@ const AsgConfig: AutoScalingConfigs = {
     ecsClusterName: cluster.cluster.name,
 }
 
+new AutoScalingStack(app, "asg-stack", AsgConfig)
+
 /*const InstanceConfig: InstanceConfigs {
     launchTemplate: {
         id: launchTemplate.launchTemplate.id
@@ -78,7 +80,7 @@ const EcsConfig: EcsServiceConfigs = {
     cluster: cluster.cluster.arn,
     taskDefinition: taskDefinition.td.arn,
     targetGroup: lb.targetGroup.arn,
-    securityGroup: sGroup.sg.id
+    securityGroup: sGroup.sg.id,
     desiredCount: 3,
 }
 
