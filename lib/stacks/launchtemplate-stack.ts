@@ -1,6 +1,5 @@
 import { Construct } from 'constructs';
 import { AwsStackBase, BaseStackProps } from './stackbase';
-import { EcsServiceConfigs } from './ecs-service-stack';
 import { LaunchTemplate } from '@cdktf/provider-aws/lib/launch-template'
 
 export interface LaunchTemplateConfigs extends BaseStackProps {
@@ -23,16 +22,15 @@ export class LaunchTemplateStack extends AwsStackBase {
             region: props.region
         })
         this.launchTemplate = new LaunchTemplate(this,`${props.name}-launch-template`, {
-            id: props.id,
             instanceType: props.instanceType,
             iamInstanceProfile: {
                 name: props.iamInstanceProfile,
             },
-            securityGroupIds: props.securityGroupIds,
+            vpcSecurityGroupIds: props.securityGroupIds,
             updateDefaultVersion: true,
             userData: props.userData,
 
-            tags = {
+            tags : {
                 Name: `${props.name}-instance`,
             }
 
