@@ -1,5 +1,5 @@
 import { Construct } from 'constructs';
-import { AwsStackBase, BaseStackProps } from 'stackbase';
+import { AwsStackBase, BaseStackProps } from './stackbase';
 import { Instance, InstanceLaunchTemplate } from '@cdktf/provider-aws/lib/instance';
 
 

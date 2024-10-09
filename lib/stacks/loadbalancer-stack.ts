@@ -1,5 +1,5 @@
 import { Construct } from 'constructs';
-import { AwsStackBase, BaseStackProps } from 'stackbase';
+import { AwsStackBase, BaseStackProps } from './stackbase';
 import { Alb } from '@cdktf/provider-aws/lib/alb';
 import { AlbTargetGroup } from '@cdktf/provider-aws/lib/alb-target-group';
 import { AlbListener } from '@cdktf/provider-aws/lib/alb-listener';

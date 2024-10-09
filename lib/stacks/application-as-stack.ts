@@ -1,5 +1,5 @@
 import { Construct } from 'constructs';
-import { AwsStackBase, BaseStackProps } from 'stackbase';
+import { AwsStackBase, BaseStackProps } from './stackbase';
 import { AppAutoscalingTarget } from '@cdktf/provider-aws/lib/appautoscaling-target'
 import { AppAutoscalingPolicy } from '@cdktf/provider-aws/lib/appautoscaling-policy'
 

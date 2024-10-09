@@ -1,6 +1,7 @@
 import { Construct } from 'constructs';
 import { Fn } from 'cdktf';
-import { AwsStackBase, BaseStackProps } from 'stackbase';
+import { AwsStackBase, BaseStackProps } from './stackbase';
+import { DbConfigs } from './db-stack';
 import { EcsTaskDefinition} from '@cdktf/provider-aws/lib/ecs-task-definition';
 import { IamRole } from '@cdktf/provider-aws/lib/iam-role';
 import { CloudwatchLogGroup} from '@cdktf/provider-aws/lib/cloudwatch-log-group';

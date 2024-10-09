@@ -1,5 +1,5 @@
 import { Construct } from 'constructs';
-import { AwsStackBase, BaseStackProps } from 'stackbase';
+import { AwsStackBase, BaseStackProps } from './stackbase';
 import { LaunchTemplate, LaunchTemplateIamInstanceProfile } from '@cdktf/provider-aws/lib/launch-template'
 
 export interface LaunchTemplateConfigs extends BaseStackProps {

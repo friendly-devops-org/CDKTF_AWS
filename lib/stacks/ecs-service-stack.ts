@@ -1,5 +1,5 @@
 import { Construct } from 'constructs';
-import { AwsStackBase, BaseStackProps } from 'stackbase';
+import { AwsStackBase, BaseStackProps } from './stackbase';
 import { EcsService } from '@cdktf/provider-aws/lib/ecs-service';
 
 export interface EcsServiceConfigs extends BaseStackProps {
