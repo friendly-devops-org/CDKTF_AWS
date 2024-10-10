@@ -28,7 +28,7 @@ jobs:
       - name: CDKTF Synth
         run: |
           cdktf --app "npx ts-node main.ts" synth
-          ls */*/*
+          ls cdktf.out/*/*
         env:
           USER: ${{ secrets.DB_USER }}
           PASS: ${{ secrets.DB_PASS }}
