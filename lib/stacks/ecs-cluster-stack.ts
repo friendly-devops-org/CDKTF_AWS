@@ -7,7 +7,7 @@ import { IamInstanceProfile } from '@cdktf/provider-aws/lib/iam-instance-profile
 export class EcsClusterStack extends AwsStackBase {
     public cluster: EcsCluster
     private ecsRole: IamRole;
-    public instanceProfile; IamInstanceProfile;
+    public instanceProfile: IamInstanceProfile;
     constructor(scope: Construct, id: string, props: BaseStackProps) {
         super(scope, `${props.name}-${id}`, {
             name: props.name,
