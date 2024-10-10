@@ -20,9 +20,7 @@ const StackProps: BaseStackProps = {
 function aFile(key: string){
     const fileS = require('fs');
     fileS.writeFileSync('./scripts/cluster.sh',"#!/bin/bash\n");
-    fileS.appendFileSync('./scripts/cluster.sh',"sudo mv /etc/ecs/ecs.conf .");
-    fileS.appendFileSync('./scripts/cluster.sh',"sudo echo " + key + " >> ecs.conf");
-    fileS.appendFileSync('./scripts/cluster.sh',"sudo cp ecs.conf /etc/ecs/ecs.conf");
+    fileS.appendFileSync('./scripts/cluster.sh',"sudo echo ECS_CLUSTER=" + key + " >> /etc/ecs/ecs.conf");
 }
 
 const app = new App();
