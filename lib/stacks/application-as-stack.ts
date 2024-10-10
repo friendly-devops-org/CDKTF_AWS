@@ -26,7 +26,7 @@ export class AppAutoScalingStack extends AwsStackBase {
         this.appAutoScaling = new AppautoscalingTarget(this, `${props.name}-application-auto-scaler`, {
             minCapacity: props.minCapacity,
             maxCapacity: props.maxCapacity,
-            resourceId: `service/${props.ecsClusterName}/${props.ecsServiceName}}`,
+            resourceId: `service/${props.ecsClusterName}/${props.ecsServiceName}`,
             scalableDimension: "ecs:service:DesiredCount",
             serviceNamespace: "ecs",
 
