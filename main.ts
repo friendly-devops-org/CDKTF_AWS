@@ -95,7 +95,7 @@ const EcsConfig: EcsServiceConfigs = {
     taskDefinition: taskDefinition.td.arn,
     targetGroup: lb.targetGroup.arn,
     securityGroup: sGroup.sg.id,
-    desiredCount: 3,
+    desiredCount: 1,
 }
 
 const ecs = new EcsServiceStack(app, "ecs-service-stack", EcsConfig);
