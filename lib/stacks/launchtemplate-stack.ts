@@ -22,12 +22,11 @@ export class LaunchTemplateStack extends AwsStackBase {
             project: props.project,
             region: props.region
         })
-
         this.launchTemplate = new LaunchTemplate(this,`${props.name}-launch-template`, {
             instanceType: props.instanceType,
             imageId: props.imageId,
             iamInstanceProfile: {
-                name: this.ecsRole.name,
+                arn: props.iamInstanceProfile,
             },
             vpcSecurityGroupIds: props.securityGroupIds,
             updateDefaultVersion: true,
@@ -37,7 +36,6 @@ export class LaunchTemplateStack extends AwsStackBase {
                 Name: `${props.name}-instance`,
             }
 
-        });
-
+        })
     }
 }
