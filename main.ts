@@ -66,7 +66,7 @@ const AsgConfig: AutoScalingConfigs = {
     maxSize: 3,
     launchTemplate: {
         id: launchTemplate.launchTemplate.id,
-        version: "${Latest}",
+//      version: "${Latest}",
     },
     vpcZoneIdentifier: [`${process.env.SUBNET}`, `${process.env.SUBNET_2}`],
     cpuTargetValue: 80,
