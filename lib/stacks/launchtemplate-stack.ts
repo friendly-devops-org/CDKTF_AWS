@@ -69,14 +69,14 @@ export class LaunchTemplateStack extends AwsStackBase {
             instanceType: props.instanceType,
             imageId: props.imageId,
             iamInstanceProfile: {
-                arn: props.iamInstanceProfile,
+                name: this.ecsRole.name,
             },
             vpcSecurityGroupIds: props.securityGroupIds,
             updateDefaultVersion: true,
             userData: readFileSync(`${props.userData}`,{encoding: 'base64'}),
 
             tags : {
-                Name: this.ecsRole.name,
+                Name: `${props.name}-instance`,
             }
 
         });
