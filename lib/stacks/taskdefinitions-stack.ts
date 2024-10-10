@@ -94,9 +94,9 @@ export class taskDefinitionStack extends AwsStackBase {
         this.td = new EcsTaskDefinition(this, `${props.name}-task-definition`, {
             family: `${props.name}-client`,
             memory: "512",
-            cpu: "1024",
+            cpu: "512",
             networkMode: "awsvpc",
-            requiresCompatibilities: ["FARGATE"],
+            requiresCompatibilities: ["EC2"],
             executionRoleArn: executionRole.arn,
             taskRoleArn: taskRole.arn,
 
