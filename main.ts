@@ -20,7 +20,7 @@ const StackProps: BaseStackProps = {
 function aFile(key: string){
     const fileS = require('fs');
     fileS.writeFileSync('./scripts/cluster.sh',"#!/bin/bash\n");
-    fileS.appendFileSync('./scripts/cluster.sh',"sudo echo ECS_CLUSTER" + key + " >> /etc/ecs/ecs.conf");
+    fileS.appendFileSync('./scripts/cluster.sh',"sudo echo ECS_CLUSTER" + key + " >> /etc/ecs/ecs.config");
 }
 
 const app = new App();
@@ -63,8 +63,8 @@ const AsgConfig: AutoScalingConfigs = {
     name: StackProps.name,
     project: StackProps.project,
     region: StackProps.region,
-    desiredCapacity: 3,
-    minSize: 1,
+    desiredCapacity: 1,
+    minSize: 0,
     maxSize: 3,
     launchTemplate: {
         id: launchTemplate.launchTemplate.id,
