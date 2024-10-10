@@ -10,40 +10,26 @@ export interface LaunchTemplateConfigs extends BaseStackProps {
     region: string,
     imageId: string,
     instanceType: string,
-    iamInstanceProfile: string,
+//    iamInstanceProfile: string,
     securityGroupIds: string[],
     userData: string,
 }
 
 export class LaunchTemplateStack extends AwsStackBase {
     public launchTemplate: LaunchTemplate;
+    private ecsRole: IamRole;
     constructor(scope: Construct, id: string, props: LaunchTemplateConfigs) {
         super(scope,`${props.name}-${id}` , {
             name: props.name,
             project: props.project,
             region: props.region
         })
-        this.launchTemplate = new LaunchTemplate(this,`${props.name}-launch-template`, {
-            instanceType: props.instanceType,
-            imageId: props.imageId,
-            iamInstanceProfile: {
-                arn: props.iamInstanceProfile,
-            },
-            vpcSecurityGroupIds: props.securityGroupIds,
-            updateDefaultVersion: true,
-            userData: readFileSync(`${props.userData}`,{encoding: 'base64'}),
 
-            tags : {
-                Name: `${props.name}-instance`,
-            }
-
-        })
-
-        this.taskRole = new IamRole(this, `${props.name}-ecs-role`, {
+        this.ecsRole = new IamRole(this, `${props.name}-ecs-role`, {
           name: `${props.name}-ecs-role`,
           inlinePolicy: [
             {
-              name: "allow-logs",
+              name: "deploy-ecs",
               policy: JSON.stringify({
                 Version: "2012-10-17",
                 Statement: [
@@ -78,5 +64,22 @@ export class LaunchTemplateStack extends AwsStackBase {
             ],
           }),
         });
+
+        this.launchTemplate = new LaunchTemplate(this,`${props.name}-launch-template`, {
+            instanceType: props.instanceType,
+            imageId: props.imageId,
+            iamInstanceProfile: {
+                arn: props.iamInstanceProfile,
+            },
+            vpcSecurityGroupIds: props.securityGroupIds,
+            updateDefaultVersion: true,
+            userData: readFileSync(`${props.userData}`,{encoding: 'base64'}),
+
+            tags : {
+                Name: this.ecsRole.name,
+            }
+
+        });
+
     }
 }

@@ -50,7 +50,7 @@ const LTConfig: LaunchTemplateConfigs = {
     region: StackProps.region,
     imageId: "ami-09da212cf18033880",
     instanceType: "t3.micro",
-    iamInstanceProfile: "arn:aws:iam::786964317800:role/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS",
+//    iamInstanceProfile: "ecsInstanceRole",
     securityGroupIds: [sGroup.sg.id],
     userData: "./scripts/cluster.sh"
 }
