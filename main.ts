@@ -49,6 +49,7 @@ const LbConfig: LbConfigs = {
     securityGroup: sGroup.sg.id,
 }
 
+console.log(cluster.cluster.name)
 aFile(cluster.cluster.name);
 
 const LTConfig: LaunchTemplateConfigs = {
