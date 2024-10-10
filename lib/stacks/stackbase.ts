@@ -14,7 +14,7 @@ export class AwsStackBase extends cdktf.TerraformStack {
     public _provider: cdktf.TerraformProvider;
 
     constructor(scope: Construct, id: string, baseProps: BaseStackProps) {
-        super(scope, `${id}`);
+        super(scope, `${baseProps.project}-${id}`);
         this._provider = new AwsProvider(this, 'aws', {
             region: baseProps.region,
         })
