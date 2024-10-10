@@ -50,7 +50,7 @@ const LTConfig: LaunchTemplateConfigs = {
     name: StackProps.name,
     project: StackProps.project,
     region: StackProps.region,
-    imageId: "ami-09da212cf18033880",
+    imageId: "ami-00f453db4525939cf",
     instanceType: "t3.micro",
     iamInstanceProfile: cluster.instanceProfile.name,
     securityGroupIds: [sGroup.sg.id],
