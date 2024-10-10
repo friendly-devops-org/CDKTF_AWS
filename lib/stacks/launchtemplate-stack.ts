@@ -26,7 +26,7 @@ export class LaunchTemplateStack extends AwsStackBase {
             instanceType: props.instanceType,
             imageId: props.imageId,
             iamInstanceProfile: {
-                arn: props.iamInstanceProfile,
+                name: props.iamInstanceProfile,
             },
             vpcSecurityGroupIds: props.securityGroupIds,
             updateDefaultVersion: true,
