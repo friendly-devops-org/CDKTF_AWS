@@ -22,7 +22,7 @@ export class AwsStackBase extends cdktf.TerraformStack {
 
         new cdktf.S3Backend(this, {
             bucket: bucketName,
-            key: `${baseProps.project}/${baseProps.name}`,
+            key: `${baseProps.project}/${baseProps.name}-${id}`,
             region: `${baseProps.region}`
         });
 

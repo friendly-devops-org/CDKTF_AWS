@@ -62,6 +62,5 @@ export class LoadBalancerStack extends AwsStackBase {
             },
           ],
         })
-
     }
 }
