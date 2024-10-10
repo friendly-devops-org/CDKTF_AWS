@@ -23,7 +23,7 @@ jobs:
           node-version: 18.12.0
       - name: install dependencies
         run: |
-          npm install -g cdktf-cli@latest --force
+          npm install -g cdktf-cli@0.20.9 --force
           npm install --force
       - name: CDKTF Synth
         run: |
