@@ -17,18 +17,6 @@ const StackProps: BaseStackProps = {
     region: "us-east-2"
 }
 
-const fileS = require('fs');
-function aFile(key: string){
-    fileS.appendFileSync('./scripts/cluster.sh',"\necho " + `${key}` +  " >> /etc/ecs/ecs.conf");
-    console.log("################################################");
-    console.log("################################################");
-    console.log("");
-    console.log("key = " + key);
-    console.log("");
-    console.log("################################################");
-    console.log("################################################");
-}
-
 const app = new App();
 const cluster = new EcsClusterStack(app, "ecs-cluster-stack", StackProps);
 const sGroup = new sgStack(app, "sg-stack", StackProps);
@@ -48,9 +36,6 @@ const LbConfig: LbConfigs = {
     region: StackProps.region,
     securityGroup: sGroup.sg.id,
 }
-
-console.log(cluster.cluster.name)
-aFile(cluster.cluster.name);
 
 const LTConfig: LaunchTemplateConfigs = {
     name: StackProps.name,
