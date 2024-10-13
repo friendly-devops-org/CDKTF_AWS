@@ -11,7 +11,7 @@ export interface RouteConfigs extends BaseStackProps {
     lbZoneId:string,
 }
 
-export class LoadBalancerStack extends AwsStackBase {
+export class Route53Stack extends AwsStackBase {
     constructor(scope: Construct, id: string, props: RouteConfigs) {
         super(scope, `${props.name}-${id}`, {
             name: props.name,
