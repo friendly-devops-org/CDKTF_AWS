@@ -26,7 +26,7 @@ export class EcsServiceStack extends AwsStackBase {
             name: `${props.name}-service`,
             taskDefinition: props.taskDefinition,
             desiredCount: props.desiredCount,
-            launchType: "EC2",
+            launchType: "FARGATE",
             healthCheckGracePeriodSeconds: 300,
             loadBalancer: [
                 {
