@@ -10,7 +10,7 @@ import { LaunchTemplateStack, LaunchTemplateConfigs } from './lib/stacks/launcht
 import { AutoScalingStack, AutoScalingConfigs } from './lib/stacks/autoscaling-stack';
 import { AppAutoScalingStack, AppAutoScalingConfigs } from './lib/stacks/application-as-stack';
 import { sgStack } from './lib/stacks/securitygroup-stack';
-import { Route53Stack } from './lib/stacks/route53-stack';
+import { Route53Stack, RouteConfigs } from './lib/stacks/route53-stack';
 
 const StackProps: BaseStackProps = {
     name: "first-complete",
