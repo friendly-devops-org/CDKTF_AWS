@@ -14,8 +14,8 @@ export interface LbConfigs extends BaseStackProps {
 
 export class LoadBalancerStack extends AwsStackBase {
     public lb: Alb;
-    private lbl: AlbListener;
-    private lblSecure: AlbListener;
+    public lbl: AlbListener;
+    public lblSecure: AlbListener;
     public targetGroup: AlbTargetGroup;
     constructor(scope: Construct, id: string, props: LbConfigs) {
         super(scope, `${props.name}-${id}`, {
