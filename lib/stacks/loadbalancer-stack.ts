@@ -14,6 +14,8 @@ export interface LbConfigs extends BaseStackProps {
 
 export class LoadBalancerStack extends AwsStackBase {
     public lb: Alb;
+    private lbl: AlbListener;
+    private lblSecure: AlbListener;
     public targetGroup: AlbTargetGroup;
     constructor(scope: Construct, id: string, props: LbConfigs) {
         super(scope, `${props.name}-${id}`, {
@@ -50,7 +52,7 @@ export class LoadBalancerStack extends AwsStackBase {
           }
         })
 
-        const lbl = new AlbListener(this, `${props.name}-listener`, {
+        this.lbl = new AlbListener(this, `${props.name}-listener`, {
           loadBalancerArn: this.lb.arn,
           port: 80,
           protocol: "HTTP",
@@ -63,19 +65,19 @@ export class LoadBalancerStack extends AwsStackBase {
                 host: "#{host}",
                 path: "/#{path}",
                 protocol: "HTTPS",
-                status_code: "HTTP_301",
+                statusCode: "HTTP_301",
               },
             },
           ],
         })
 
-        const lblSecure = new AlbListener(this, `${props.name}-secure-listener`, {
+        this.lblSecure = new AlbListener(this, `${props.name}-secure-listener`, {
           loadBalancerArn: this.lb.arn,
           port: 443,
           protocol: "TLS",
-          ssl_policy: "ELBSecurityPolicy-2016-08",
-          certificate_arn: props.certificate,
-          alpn_policy: "HTTP2Preferred"
+          sslPolicy: "ELBSecurityPolicy-2016-08",
+          certificateArn: props.certificate,
+          alpnPolicy: "HTTP2Preferred",
 
           defaultAction: [
             {
