@@ -12,6 +12,7 @@ export interface RouteConfigs extends BaseStackProps {
 }
 
 export class Route53Stack extends AwsStackBase {
+    public record: Route53Recod;
     constructor(scope: Construct, id: string, props: RouteConfigs) {
         super(scope, `${props.name}-${id}`, {
             name: props.name,
@@ -26,7 +27,7 @@ export class Route53Stack extends AwsStackBase {
             alias: {
                 name: props.dnsName,
                 zoneId: props.lbZoneId,
-                evaluateTargethealth: false,
+                evaluateTargetHealth: false,
             }
         })
     }
