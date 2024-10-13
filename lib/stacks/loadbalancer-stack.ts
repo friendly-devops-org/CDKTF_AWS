@@ -74,7 +74,7 @@ export class LoadBalancerStack extends AwsStackBase {
         this.lblSecure = new AlbListener(this, `${props.name}-secure-listener`, {
           loadBalancerArn: this.lb.arn,
           port: 443,
-          protocol: "TLS",
+          protocol: "HTTPS",
           sslPolicy: "ELBSecurityPolicy-2016-08",
           certificateArn: "arn:aws:acm:us-east-2:786964317800:certificate/b8346570-c4a0-4ee9-9646-1b37efc1497b",
           alpnPolicy: "HTTP2Preferred",
