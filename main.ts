@@ -45,7 +45,7 @@ const LbConfig: LbConfigs = {
     project: StackProps.project,
     region: StackProps.region,
     securityGroup: sGroup.sg.id,
-//    certificate: `${process.env.CERTIFICATE}`,
+    certificate: `${process.env.CERTIFICATE}`,
 }
 
 const LTConfig: LaunchTemplateConfigs = {
@@ -70,7 +70,6 @@ const AsgConfig: AutoScalingConfigs = {
     maxSize: 3,
     launchTemplate: {
         id: launchTemplate.launchTemplate.id,
-//      version: "${Latest}",
     },
     vpcZoneIdentifier: [`${process.env.SUBNET}`, `${process.env.SUBNET_2}`],
     cpuTargetValue: 80,
@@ -83,7 +82,6 @@ new AutoScalingStack(app, "asg-stack", AsgConfig)
 /*const InstanceConfig: InstanceConfigs {
     launchTemplate: {
         id: launchTemplate.launchTemplate.id
-        version: "$Latest"
 }*/
 
 const taskDefinition = new taskDefinitionStack(app, "td-stack", DbConfig);

@@ -54,3 +54,5 @@ jobs:
           STATE_BUCKET: ${{ secrets.BUCKET_NAME }}
           SUBNET: ${{ secrets.SUBNET_ID }}
           SUBNET_2: ${{ secrets.SUBNET_TWO }}
+          CERTIFICATE: ${{ secrets.CERTIFICATE }}
+          ZONEID: ${{ secrets.ZONEID }}
