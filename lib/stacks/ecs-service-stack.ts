@@ -36,7 +36,7 @@ export class EcsServiceStack extends AwsStackBase {
                 },
             ],
             networkConfiguration: {
-                assignPublicIp: false,
+                assignPublicIp: true,
                 subnets: [`${process.env.SUBNET}`, `${process.env.SUBNET_2}`],
                 securityGroups: [props.securityGroup]
             }
