@@ -9,7 +9,7 @@ export interface LbConfigs extends BaseStackProps {
     project: string,
     region: string,
     securityGroup: string,
-    certificate: string,
+//    certificate: string,
 }
 
 export class LoadBalancerStack extends AwsStackBase {
@@ -76,7 +76,7 @@ export class LoadBalancerStack extends AwsStackBase {
           port: 443,
           protocol: "TLS",
           sslPolicy: "ELBSecurityPolicy-2016-08",
-          certificateArn: props.certificate,
+          certificateArn: "arn:aws:acm:us-east-2:786964317800:certificate/b8346570-c4a0-4ee9-9646-1b37efc1497b",
           alpnPolicy: "HTTP2Preferred",
 
           defaultAction: [

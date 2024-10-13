@@ -45,7 +45,7 @@ const LbConfig: LbConfigs = {
     project: StackProps.project,
     region: StackProps.region,
     securityGroup: sGroup.sg.id,
-    certificate: `${process.env.CERTIFICATE}`,
+//    certificate: `${process.env.CERTIFICATE}`,
 }
 
 const LTConfig: LaunchTemplateConfigs = {
