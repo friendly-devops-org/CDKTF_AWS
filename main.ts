@@ -6,8 +6,8 @@ import { LoadBalancerStack, LbConfigs } from './lib/stacks/loadbalancer-stack';
 import { EcsClusterStack } from './lib/stacks/ecs-cluster-stack';
 import { EcsServiceStack, EcsServiceConfigs } from './lib/stacks/ecs-service-stack';
 //import { InstanceStack, InstanceConfigs } from './lib/stacks/ec2-stack';
-//import { LaunchTemplateStack, LaunchTemplateConfigs } from './lib/stacks/launchtemplate-stack';
-//import { AutoScalingStack, AutoScalingConfigs } from './lib/stacks/autoscaling-stack';
+import { LaunchTemplateStack, LaunchTemplateConfigs } from './lib/stacks/launchtemplate-stack';
+import { AutoScalingStack, AutoScalingConfigs } from './lib/stacks/autoscaling-stack';
 import { AppAutoScalingStack, AppAutoScalingConfigs } from './lib/stacks/application-as-stack';
 import { sgStack } from './lib/stacks/securitygroup-stack';
 import { Route53Stack, RouteConfigs } from './lib/stacks/route53-stack';
@@ -48,7 +48,6 @@ const LbConfig: LbConfigs = {
     certificate: `${process.env.CERTIFICATE}`,
 }
 
-/*
 const LTConfig: LaunchTemplateConfigs = {
     name: StackProps.name,
     project: StackProps.project,
@@ -79,7 +78,7 @@ const AsgConfig: AutoScalingConfigs = {
 }
 
 new AutoScalingStack(app, "asg-stack", AsgConfig)
-*/
+
 /*const InstanceConfig: InstanceConfigs {
     launchTemplate: {
         id: launchTemplate.launchTemplate.id
