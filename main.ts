@@ -10,6 +10,7 @@ import { LaunchTemplateStack, LaunchTemplateConfigs } from './lib/stacks/launcht
 import { AutoScalingStack, AutoScalingConfigs } from './lib/stacks/autoscaling-stack';
 import { AppAutoScalingStack, AppAutoScalingConfigs } from './lib/stacks/application-as-stack';
 import { sgStack } from './lib/stacks/securitygroup-stack';
+import { Route53Stack } from './lib/stacks/route53-stack';
 
 const StackProps: BaseStackProps = {
     name: "first-complete",
@@ -44,6 +45,7 @@ const LbConfig: LbConfigs = {
     project: StackProps.project,
     region: StackProps.region,
     securityGroup: sGroup.sg.id,
+    certificate: `${process.env.CERTIFICATE}`,
 }
 
 const LTConfig: LaunchTemplateConfigs = {
@@ -113,6 +115,17 @@ const AppAsConfig : AppAutoScalingConfigs = {
 }
 
 new AppAutoScalingStack(app, "ecs-autoscaling-stack", AppAsConfig)
+
+ const routeConfig : RouteConfigs = {
+    name: StackProps.name,
+    project: StackProps.project,
+    region: StackProps.region,
+    zoneId: `${process.env.ZONEID}`,
+    dnsName: lb.lb.dnsName,
+    lbZoneId: lb.lb.zoneId,
+}
+
+new Route53Stack(app, "route53-stack", routeConfig)
 
 // To deploy using Terraform Cloud comment out the above line
 // And uncomment the below block of lines

@@ -22,8 +22,8 @@ export class sgStack extends AwsStackBase {
                 },
                 {
                     protocol: "TCP",
-                    fromPort: 80,
-                    toPort: 80,
+                    fromPort: 443,
+                    toPort: 443,
                     cidrBlocks: ["0.0.0.0/0"],
                     ipv6CidrBlocks: ["::/0"]
                 }
