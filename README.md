@@ -9,8 +9,8 @@ Comment out Config credentials in .github/workflows/deployment-workflow.yml
 
 Add CDKTF_ECS_TFC_ORGANIZATION to the env block of CDKTF Deployment in .github/workflow/deployment-workflow.yml with the name of your organizatoin as the value.
 ### In the secrets and variables Actions menu, place the following key pairs
-    1. AWS_ACCESS_KEY_ID: <AWS_ACCESS_KEY_ID>
-    2. AWS_SECRET_ACCESS_KEY: <AWS_SECRET_ACCESS_KEY>
+    1. AWS_ACCOUNT: <AWS_ACCOUNT>
+    2. AWS_ROLE: <AWS_ROLE>
     3. DB_USER: <database_user_name>
     4. DB_PASS: <database_password>
     5. VPC_ID: <id_of_vpc>
