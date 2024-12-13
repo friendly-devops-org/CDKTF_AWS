@@ -5,12 +5,12 @@ import { dbStack, DbConfigs } from './lib/stacks/db-stack';
 import { LoadBalancerStack, LbConfigs } from './lib/stacks/loadbalancer-stack';
 import { EcsClusterStack } from './lib/stacks/ecs-cluster-stack';
 import { EcsServiceStack, EcsServiceConfigs } from './lib/stacks/ecs-service-stack';
-//import { InstanceStack, InstanceConfigs } from './lib/stacks/ec2-stack';
 import { LaunchTemplateStack, LaunchTemplateConfigs } from './lib/stacks/launchtemplate-stack';
 import { AutoScalingStack, AutoScalingConfigs } from './lib/stacks/autoscaling-stack';
 import { AppAutoScalingStack, AppAutoScalingConfigs } from './lib/stacks/application-as-stack';
 import { sgStack } from './lib/stacks/securitygroup-stack';
 import { Route53Stack, RouteConfigs } from './lib/stacks/route53-stack';
+import { efsStack, EfsConfigs } from './lib/stacks/efs-stack';
 
 const StackProps: BaseStackProps = {
     name: "first-complete",
@@ -32,12 +32,24 @@ const db = new dbStack(app, "db-stack", StackProps);
 const clusterName = `${StackProps.name}-${StackProps.project}-cluster`;
 aFile(clusterName);
 
+const EfsConfig: EfsConfigs = {
+    name: StackProps.name,
+    project: StackProps.project,
+    region: StackProps.region,
+    securityGroup: sGroup.sg.id,
+}
+
+const EfsTarget = new efsStack(app, "efs-stack", EfsConfig)
+
 const DbConfig: DbConfigs = {
     name: StackProps.name,
     project: StackProps.project,
     region: StackProps.region,
     dbAddress: db.db.address,
     dbName: db.db.dbName,
+    fileSystemId: EfsTarget.efs.id,
+    accessPointId: EfsTarget.efsAp.id,
+
 }
 
 const LbConfig: LbConfigs = {

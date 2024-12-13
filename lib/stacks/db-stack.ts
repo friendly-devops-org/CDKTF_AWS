@@ -8,6 +8,8 @@ export interface DbConfigs extends BaseStackProps {
     region: string,
     dbAddress: string,
     dbName: string,
+    fileSystemId: string,
+    accessPointId: string
 }
 
 export class dbStack extends AwsStackBase {
