@@ -162,19 +162,21 @@ export class taskDefinitionStack extends AwsStackBase {
                 ]
               }
             ]),
-            volume: {
-                name: ,
-                efsVolumeConfiguration: {
-                    fileSystemId: `${props.fileSystemId}`,
-                    rootDirectory: "/var/test",
-                    transitEncryption: "ENABLED",
-                    transitEncryptionPort: 5129,
-                    authorizationConfig: {
-                       accessPointId: `${props.accessPointId}`,
-                       iam: "ENABLED", 
+            volume: [
+                {
+                    name: ,
+                    efsVolumeConfiguration: {
+                        fileSystemId: `${props.fileSystemId}`,
+                        rootDirectory: "/var/test",
+                        transitEncryption: "ENABLED",
+                        transitEncryptionPort: 5129,
+                        authorizationConfig: {
+                           accessPointId: `${props.accessPointId}`,
+                           iam: "ENABLED", 
+                        }
                     }
                 }
-            }
+            ]
         })
     }
 }
