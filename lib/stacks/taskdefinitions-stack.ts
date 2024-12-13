@@ -121,13 +121,6 @@ export class taskDefinitionStack extends AwsStackBase {
                       "awslogs-stream-prefix": props.name,
                     },
                 },
-                mountPoints: [
-                    {
-                        sourceVolume: `${props.name}-efs-volume`,
-                        containerPath: "/var/test",
-                        readOnly: false
-                    }
-                ],
                 environment: [
                   {
                     name: "NAME",
