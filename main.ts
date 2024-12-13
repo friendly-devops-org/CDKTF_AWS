@@ -36,7 +36,6 @@ const EfsConfig: EfsConfigs = {
     name: StackProps.name,
     project: StackProps.project,
     region: StackProps.region,
-    securityGroup: sGroup.sg.id,
 }
 
 const EfsTarget = new efsStack(app, "efs-stack", EfsConfig)
