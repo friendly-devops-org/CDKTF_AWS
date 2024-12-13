@@ -35,7 +35,7 @@ export class efsStack extends AwsStackBase {
             }
         })
 
-        this.efsAp = new EfsAccessPoint (this, `${props.name}-efsMT`, {
+        this.efsAp = new EfsAccessPoint (this, `${props.name}-efsAP`, {
             fileSystemId: this.efs.id
         })
     }
