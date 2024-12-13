@@ -134,6 +134,13 @@ export class taskDefinitionStack extends AwsStackBase {
                       "awslogs-stream-prefix": props.name,
                     },
                 },
+                mountPoints: [
+                    {
+                        sourceVolume: `${props.name}-efs-volume`,
+                        containerPath: "/var/test",
+                        readOnly: false
+                    }
+                ]
                 environment: [
                   {
                     name: "NAME",
@@ -164,10 +171,9 @@ export class taskDefinitionStack extends AwsStackBase {
             ]),
             volume: [
                 {
-                    name: `${props.name}-volume`,
+                    name: `${props.name}-efs-volume`,
                     efsVolumeConfiguration: {
                         fileSystemId: `${props.fileSystemId}`,
-                        rootDirectory: "/var/test",
                         transitEncryption: "ENABLED",
                         transitEncryptionPort: 5129,
                         authorizationConfig: {
