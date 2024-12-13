@@ -140,7 +140,7 @@ export class taskDefinitionStack extends AwsStackBase {
                         containerPath: "/var/test",
                         readOnly: false
                     }
-                ]
+                ],
                 environment: [
                   {
                     name: "NAME",
