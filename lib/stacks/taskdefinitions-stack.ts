@@ -70,19 +70,6 @@ export class taskDefinitionStack extends AwsStackBase {
                 ],
               }),
             },
-            {
-              name: "kms",
-              policy: JSON.stringify({
-                Version: "2012-10-17",
-                Statement: [
-                  {
-                    Effect: "Allow",
-                    Action: ["kms:*"],
-                    Resource: "*",
-                  },
-                ],
-              }),
-            },
           ],
           assumeRolePolicy: JSON.stringify({
             Version: "2012-10-17",
@@ -169,20 +156,6 @@ export class taskDefinitionStack extends AwsStackBase {
                 ]
               }
             ]),
-            volume: [
-                {
-                    name: `${props.name}-efs-volume`,
-                    efsVolumeConfiguration: {
-                        fileSystemId: `${props.fileSystemId}`,
-                        transitEncryption: "ENABLED",
-                        transitEncryptionPort: 5129,
-                        authorizationConfig: {
-                           accessPointId: `${props.accessPointId}`,
-                           iam: "ENABLED", 
-                        }
-                    }
-                }
-            ]
         })
     }
 }
