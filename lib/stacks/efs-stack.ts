@@ -1,8 +1,8 @@
 import { Construct } from 'constructs';
 import { BaseStackProps } from './stackbase';
-import { EfsFileSystem } from '@cdktf/provider-aws/lib/efs-file-system'
-import { EfsAccessPoint } from '@cdktf/provider-aws/lib/efs-access-point'
-import { KmsKey } from '@cdktf/provider-aws/lib/kms-key'
+import { EfsFileSystem } from '@cdktf/provider-aws/lib/efs-file-system';
+import { EfsAccessPoint } from '@cdktf/provider-aws/lib/efs-access-point';
+import { KmsKey } from '@cdktf/provider-aws/lib/kms-key';
 
 export interface EfsConfigs extends BaseStackProps {
     name: string,
