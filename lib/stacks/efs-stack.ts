@@ -27,7 +27,7 @@ export class efsStack extends AwsStackBase {
         this.efs = new EfsFileSystem(this, `${props.name}-efs`, {
             creationToken: `${props.name}-${props.project}-efs`,
             encrypted: true, 
-            kmsKeyId: kmsKey.id,
+            kmsKeyId: kmsKey.arn,
 
 
             tags: {
