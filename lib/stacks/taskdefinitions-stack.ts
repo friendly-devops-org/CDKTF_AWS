@@ -164,7 +164,7 @@ export class taskDefinitionStack extends AwsStackBase {
             ]),
             volume: [
                 {
-                    name: ,
+                    name: `${props.name}-volume`,
                     efsVolumeConfiguration: {
                         fileSystemId: `${props.fileSystemId}`,
                         rootDirectory: "/var/test",
