@@ -146,10 +146,6 @@ export class taskDefinitionStack extends AwsStackBase {
                     value: `${process.env.PASS}`,
                   },
                   {
-                    name: "WORDPRESS_DB_PORT",
-                    value: "80",
-                  },
-                  {
                     name: "WORDPRESS_DB_NAME",
                     value: props.dbName,
                   }
