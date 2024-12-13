@@ -77,7 +77,7 @@ export class taskDefinitionStack extends AwsStackBase {
                 Statement: [
                   {
                     Effect: "Allow",
-                    Action: ["kms*"],
+                    Action: ["kms:*"],
                     Resource: "*",
                   },
                 ],
