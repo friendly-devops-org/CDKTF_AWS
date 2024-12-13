@@ -22,7 +22,6 @@ export class efsStack extends AwsStackBase {
 
         const kmsKey = new KmsKey(this, `${props.name}-kms-key`, {
             description: "Encryption key for the efs filesystem",
-            id: `${props.name}-efs-kms-key`
         })
 
         this.efs = new EfsFileSystem(this, `${props.name}-efs`, {
