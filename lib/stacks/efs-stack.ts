@@ -1,5 +1,5 @@
 import { Construct } from 'constructs';
-import { BaseStackProps } from './stackbase';
+import { AwsStackBase, BaseStackProps } from './stackbase';
 import { EfsFileSystem } from '@cdktf/provider-aws/lib/efs-file-system';
 import { EfsAccessPoint } from '@cdktf/provider-aws/lib/efs-access-point';
 import { KmsKey } from '@cdktf/provider-aws/lib/kms-key';
@@ -10,7 +10,7 @@ export interface EfsConfigs extends BaseStackProps {
     region: string,
 }
 
-export class efsStack extends EfsFileSystem {
+export class efsStack extends AwsStackBase {
     public efsAp: EfsAccessPoint;
     public efs: EfsFileSystem;
     constructor(scope: Construct, id: string, props: EfsConfigs) {
