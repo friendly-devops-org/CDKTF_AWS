@@ -28,7 +28,7 @@ const cluster = new EcsClusterStack(app, "ecs-cluster-stack", StackProps);
 const sGroup = new sgStack(app, "sg-stack", StackProps);
 const db = new dbStack(app, "db-stack", StackProps);
 
-const clusterName = `${StackProps.name}-${StackProps.project}-cluster`;
+const clusterName = `${cluster.cluster.name}`;
 aFile(clusterName);
 
 const DbConfig: DbConfigs = {
