@@ -19,7 +19,7 @@ export class Route53Stack extends AwsStackBase {
             region: props.region,
         })
 
-        record = new Route53Record (this, `${props.name}-${id}`, {
+        new Route53Record (this, `${props.name}-${id}`, {
             name: props.name,
             type: "A",
             zoneId: props.zoneId,
