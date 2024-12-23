@@ -10,6 +10,7 @@ import { AutoScalingStack, AutoScalingConfigs } from './lib/stacks/autoscaling-s
 import { AppAutoScalingStack, AppAutoScalingConfigs } from './lib/stacks/application-as-stack';
 import { sgStack } from './lib/stacks/securitygroup-stack';
 import { Route53Stack, RouteConfigs } from './lib/stacks/route53-stack';
+//import { RemoteBackend } from 'cdktf'; // uncomment this line to use Terraform Cloud
 
 const StackProps: BaseStackProps = {
     name: "first-complete",
@@ -79,11 +80,6 @@ const AsgConfig: AutoScalingConfigs = {
 
 new AutoScalingStack(app, "asg-stack", AsgConfig)
 
-/*const InstanceConfig: InstanceConfigs {
-    launchTemplate: {
-        id: launchTemplate.launchTemplate.id
-}*/
-
 const taskDefinition = new taskDefinitionStack(app, "td-stack", DbConfig);
 const lb = new LoadBalancerStack(app, "lb-stack", LbConfig);
 
@@ -128,7 +124,7 @@ new Route53Stack(app, "route53-stack", routeConfig)
 // To deploy using Terraform Cloud comment out the above line
 // And uncomment the below block of lines
 
-/*const stack = new EcsServiceStack(app, "ecs-service-stack", EcsConfig);
+/*const stack = new Route53Stack(app, "route53-stack", routeConfig);
 new RemoteBackend(stack, {
   hostname: "app.terraform.io",
   organization: process.env.CDKTF_ECS_TFC_ORGANIZATION || "",

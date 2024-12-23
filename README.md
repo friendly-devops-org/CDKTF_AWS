@@ -3,7 +3,7 @@
 ![ECS Microservices CDKTF-AWS](images/aws.png)
 ## Instructions
 ### This deployment requires the use of user Access Keys.
-To deploy using deploy using Terraform Cloud, uncomment lines 4, 52-58 and 412-419 in main.ts and comment out line 407.
+To deploy using deploy using Terraform Cloud, uncomment lines 13, 127-134 in main.ts and comment out line 122.
 
 Comment out Config credentials in .github/workflows/deployment-workflow.yml
 
@@ -28,7 +28,7 @@ Add CDKTF_ECS_TFC_ORGANIZATION to the env block of CDKTF Deployment in .github/w
 
 ### Verify deployment by:
     1. Follow the deployment at the bmo-iac-cluster on the ECS page.
-    2. Copy the DNS name from the loadbalancer page and visit the site in a new tab
+    2. Visit the FQDN created by the Route53 stack
     
 ### Destroy Application:
     1. Navigate to the Actions tab
