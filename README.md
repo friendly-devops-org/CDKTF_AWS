@@ -18,6 +18,7 @@ Add CDKTF_ECS_TFC_ORGANIZATION to the env block of CDKTF Deployment in .github/w
     7. SUBNET: <first_subnet>
     8. SUBNET_2: <second_subnet>
     9. ZONEID: <route53 zone id>
+    10. CERTIFICATE: <certificate manager arn>
 
 ### Deploy Application:
     1. Navigate to the Actions tab
